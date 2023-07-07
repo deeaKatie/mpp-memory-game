@@ -1,7 +1,8 @@
 package repository;
 
 import exception.RepositoryException;
-import model.Game;
+import model.User;
+import model.Word;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.SQLQuery;
@@ -12,27 +13,22 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Properties;
 
-@Component
-public class GameDBRepository implements IGameDBRepository {
+public class WordDBRepository implements IWordDBRepository {
 
     private static final Logger logger= LogManager.getLogger();
     private Session session;
 
-    @Autowired
-    public GameDBRepository() {
+    public WordDBRepository() {
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
         SessionFactory factory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
         session = factory.openSession();
     }
 
     @Override
-    public Game add(Game entity) {
+    public Word add(Word entity) {
         Transaction transaction = session.beginTransaction();
         Long id = (Long) session.save(entity);
         entity.setId(id);
@@ -41,38 +37,24 @@ public class GameDBRepository implements IGameDBRepository {
     }
 
     @Override
-    public void delete(Game entity) {
+    public void delete(Word entity) {
 
     }
 
     @Override
-    public void update(Game entity, Long aLong) {
-        logger.traceEntry();
-        Transaction transaction = session.beginTransaction();
-        session.update(entity);
-        transaction.commit();
-        logger.traceExit();
+    public void update(Word entity, Long aLong) {
+
     }
 
     @Override
-    public Game findById(Long gameId) throws RepositoryException {
-        Transaction transaction = session.beginTransaction();
-        Game entity = session.get(Game.class, gameId);
-        transaction.commit();
-        return entity;
+    public Word findById(Long aLong) throws RepositoryException {
+        return null;
     }
 
     @Override
-    public Iterable<Game> getAll() {
-        Query query = session.createQuery("from Game");
-        List<Game> games = query.list();
-
-        System.out.println("GAMES");
-        for (var g : games) {
-            System.out.println(g);
-        }
-        System.out.println("END");
-
-        return games;
+    public Iterable<Word> getAll() {
+        Query query = session.createQuery("from Word");
+        List<Word> entities = query.list();
+        return entities;
     }
 }

@@ -8,9 +8,9 @@ public class LeaderboardItemDTO implements HasId<Long> {
 
     private String username;
     private Integer noOfPoints;
-    private Integer gameTimeSeconds;
+    private Long gameTimeSeconds;
 
-    public LeaderboardItemDTO(String username, Integer noOfPoints, Integer gameTimeSeconds) {
+    public LeaderboardItemDTO(String username, Integer noOfPoints, Long gameTimeSeconds) {
         this.username = username;
         this.noOfPoints = noOfPoints;
         this.gameTimeSeconds = gameTimeSeconds;
@@ -32,11 +32,11 @@ public class LeaderboardItemDTO implements HasId<Long> {
         this.noOfPoints = noOfPoints;
     }
 
-    public Integer getGameTimeSeconds() {
+    public Long getGameTimeSeconds() {
         return gameTimeSeconds;
     }
 
-    public void setGameTimeSeconds(Integer gameTimeSeconds) {
+    public void setGameTimeSeconds(Long gameTimeSeconds) {
         this.gameTimeSeconds = gameTimeSeconds;
     }
 
@@ -48,5 +48,11 @@ public class LeaderboardItemDTO implements HasId<Long> {
     @Override
     public void setId(Long aLong) {
 
+    }
+
+
+    @Override
+    public String toString() {
+        return username + " got " + noOfPoints + " points in " + gameTimeSeconds + "seconds";
     }
 }

@@ -13,5 +13,15 @@
       <Label fx:id="leaderboardLabel" layoutX="117.0" layoutY="95.0" text="Leaderboard" />
       <Label fx:id="yourGameLabel" layoutX="404.0" layoutY="95.0" text="Your game" />
       <Button fx:id="logOutButton" layoutX="534.0" layoutY="11.0" mnemonicParsing="false" onAction="#logOutHandler" text="Log out" />
+      <Button fx:id="gameButton1" onAction="#buttonPressed" layoutX="328.0" layoutY="176.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Button" />
+      <Button fx:id="gameButton2" onAction="#buttonPressed" layoutX="328.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Button" />
+      <Button fx:id="gameButton3" onAction="#buttonPressed" layoutX="328.0" layoutY="241.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Button" />
+      <Button fx:id="gameButton4" onAction="#buttonPressed" layoutX="328.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Button" />
+      <Button fx:id="gameButton5" onAction="#buttonPressed" layoutX="328.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Button" />
+      <Button fx:id="gameButton6" onAction="#buttonPressed" layoutX="439.0" layoutY="176.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Button" />
+      <Button fx:id="gameButton7" onAction="#buttonPressed" layoutX="439.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Button" />
+      <Button fx:id="gameButton8" onAction="#buttonPressed" layoutX="439.0" layoutY="241.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Button" />
+      <Button fx:id="gameButton9" onAction="#buttonPressed" layoutX="439.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Button" />
+      <Button fx:id="gameButton10" onAction="#buttonPressed" layoutX="439.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Button" />
    </children>
 </AnchorPane>

@@ -8,7 +8,7 @@
 
         <property name="dialect">dialect.SQLiteDialect</property>
         <property name="connection.driver_class">org.sqlite.JDBC</property>
-        <property name="connection.url">jdbc:sqlite:Server/hibernateORM.db</property>
+        <property name="connection.url">jdbc:sqlite:Server/memgame.db</property>
 
         <property name="hibernate.hbm2ddl.auto">update</property>
 
@@ -21,5 +21,10 @@
 <!--        <mapping class="model.User"/>-->
 
         <mapping class="model.Game"/>
+        <mapping class="model.Guess"/>
+        <mapping class="model.User"/>
+        <mapping class="model.Word"/>
+        <mapping class="model.Configuration"/>
+
     </session-factory>
 </hibernate-configuration>

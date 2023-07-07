@@ -33,6 +33,8 @@ public class UserDBRepository implements IUserRepository{
         session = factory.openSession();
     }
 
+    //todo LOGGING
+
     @Override
     public User add(User user) {
         Transaction transaction = session.beginTransaction();

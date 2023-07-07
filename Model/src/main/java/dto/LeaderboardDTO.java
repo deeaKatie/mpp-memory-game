@@ -17,7 +17,7 @@ public class LeaderboardDTO implements HasId<Long> {
         entries = new ArrayList<>();
     }
 
-    private void addEntry(LeaderboardItemDTO entry) {
+    public void addEntry(LeaderboardItemDTO entry) {
         entries.add(entry);
     }
 

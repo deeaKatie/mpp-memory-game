@@ -1,5 +1,9 @@
 package rpcprotocol;
 
+import dto.GuessDTO;
+import dto.LeaderboardDTO;
+import model.Game;
+import model.Guess;
 import model.User;
 import services.IObserver;
 import services.IServices;
@@ -86,9 +90,8 @@ public class ClientRpcReflectionWorker implements Runnable, IObserver {
         return response;
     }
 
-
     private Response handleLOGIN(Request request) {
-        System.out.println("Login request ..." + request.type());
+        System.out.println("WORKER -> LOGIN");
         User user = (User) request.data();
 
         try {
@@ -101,7 +104,7 @@ public class ClientRpcReflectionWorker implements Runnable, IObserver {
     }
 
     private Response handleLOGOUT(Request request) {
-        System.out.println("Logout request...");
+        System.out.println("WORKER -> LOGOUT");
         User user = (User) request.data();
 
         try {
@@ -111,6 +114,76 @@ public class ClientRpcReflectionWorker implements Runnable, IObserver {
             return (new Response.Builder()).type(ResponseType.OK).build();
         } catch (ServiceException ex) {
             return (new Response.Builder()).type(ResponseType.ERROR).data(ex.getMessage()).build();
+        }
+    }
+
+    private Response handleFETCH_LEADERBOARD(Request request) {
+        System.out.println("WORKER -> FETCH_LEADERBOARD");
+        try {
+            LeaderboardDTO leaderboardDTO = service.fetchLeaderboard();
+            return (new Response.Builder()).type(ResponseType.OK).data(leaderboardDTO).build();
+        } catch (Exception ex) {
+            return (new Response.Builder()).type(ResponseType.ERROR).data(ex.getMessage()).build();
+        }
+    }
+
+    private Response handleGUESS_MADE(Request request) {
+        System.out.println("WORKER -> GUESS_MADE");
+        try {
+            service.guessMade((GuessDTO) request.data());
+            return (new Response.Builder()).type(ResponseType.OK).build();
+        } catch (Exception ex) {
+            return (new Response.Builder()).type(ResponseType.ERROR).data(ex.getMessage()).build();
+        }
+    }
+
+    @Override
+    public void correctGuess(GuessDTO guessDTO) {
+        System.out.println("WORKER -> CORECT_GUESS");
+        try {
+            sendResponse((new Response.Builder()).type(ResponseType.CORRECT_GUESS).data(guessDTO).build());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void wrongGuess(GuessDTO guessDTO) {
+        System.out.println("WORKER -> WRONG_GUESS");
+        try {
+            sendResponse((new Response.Builder()).type(ResponseType.WRONG_GUESS).data(guessDTO).build());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void wonGame(Game game) {
+        System.out.println("WORKER -> GAME_END_WON");
+        try {
+            sendResponse((new Response.Builder()).type(ResponseType.GAME_END_WON).data(game).build());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void lostGame(Game game) {
+        System.out.println("WORKER -> GAME_END_LOST");
+        try {
+            sendResponse((new Response.Builder()).type(ResponseType.GAME_END_LOST).data(game).build());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateLeaderboard(LeaderboardDTO leaderboardDTO) {
+        System.out.println("WORKER -> LEADERBOARD UPDATE");
+        try {
+        sendResponse((new Response.Builder()).type(ResponseType.LEADERBOARD_UPDATE).data(leaderboardDTO).build());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

@@ -26,7 +26,7 @@ public class Game implements HasId<Long> {
     private Integer correctGuesses;
     private LocalDateTime dateStarted;
     private LocalDateTime dateEnded;
-
+    private String gameStatus;
 
     public Game() {
         id = -1L;
@@ -36,6 +36,7 @@ public class Game implements HasId<Long> {
         guesses = new ArrayList<>();
         correctGuesses = 0;
         dateStarted = LocalDateTime.now();
+        gameStatus = "onGoing";
     }
 
     public Game(Long id, Configuration configuration, User player, Integer points, List<Guess> guesses, Integer correctGuesses, LocalDateTime dateStarted, LocalDateTime dateEnded) {
@@ -47,6 +48,7 @@ public class Game implements HasId<Long> {
         this.correctGuesses = correctGuesses;
         this.dateStarted = dateStarted;
         this.dateEnded = dateEnded;
+        gameStatus = "onGoing";
     }
 
     public Game(Configuration configuration, User player) {
@@ -58,7 +60,17 @@ public class Game implements HasId<Long> {
         guesses = new ArrayList<>();
         correctGuesses = 0;
         dateStarted = LocalDateTime.now();
+        gameStatus = "onGoing";
     }
+
+    public void setGameFinished() {
+        gameStatus = "finalized";
+    }
+
+    public String getGameStatus() {
+        return gameStatus;
+    }
+
 
     private void addGuess(Guess newGuess) {
         guesses.add(newGuess);
@@ -128,4 +140,13 @@ public class Game implements HasId<Long> {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "Game{" +
+                "id=" + id +
+                ", player=" + player +
+                ", points=" + points +
+                ", gameStatus='" + gameStatus + '\'' +
+                '}';
+    }
 }

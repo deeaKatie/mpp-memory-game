@@ -1,5 +1,9 @@
 package rpcprotocol;
 
+import dto.GuessDTO;
+import dto.LeaderboardDTO;
+import model.Game;
+import model.Guess;
 import model.User;
 import services.IObserver;
 import services.IServices;
@@ -33,37 +37,6 @@ public class ServicesRpcProxy implements IServices {
         this.loggedUser = loggedUser;
     }
 
-    @Override
-    public User checkLogIn(User user, IObserver client) throws ServiceException {
-        this.initializeConnection();
-        Request req = (new Request.Builder()).type(RequestType.LOGIN).data(user).build();
-        this.sendRequest(req);
-        Response response = this.readResponse();
-        if (response.type() == ResponseType.OK) {
-            this.client = client;
-            User foundUser = (User)response.data();
-            user.setId(foundUser.getId());
-            loggedUser = foundUser;
-            return foundUser;
-        } else if (response.type() == ResponseType.ERROR) {
-            String err = response.data().toString();
-            this.closeConnection();
-            throw new ServiceException(err);
-        }
-        return null;
-    }
-
-    @Override
-    public void logout(User user) throws ServiceException {
-        Request req = (new Request.Builder()).type(RequestType.LOGOUT).data(user).build();
-        this.sendRequest(req);
-        Response response = this.readResponse();
-        this.closeConnection();
-        if (response.type() == ResponseType.ERROR) {
-            String err = response.data().toString();
-            throw new ServiceException(err);
-        }
-    }
 
     private void initializeConnection() throws ServiceException {
         try {
@@ -95,17 +68,7 @@ public class ServicesRpcProxy implements IServices {
         Thread tw = new Thread(new ReaderThread());
         tw.start();
     }
-    private void handleUpdate(Response response) {
-        System.out.println("PROXY -> handleUpdate");
-        System.out.println("RESPONSE -> " + response);
-//        if (response.type() == ResponseType.GAME_FINISHED) {
-//            //smth
-//        }
-    }
-    private boolean isUpdate(Response response) {
-        //return response.type() == ResponseType.GAME_FINISHED;
-        return false;
-    }
+
     private void sendRequest(Request request) throws ServiceException {
         try {
             this.output.writeObject(request);
@@ -159,4 +122,86 @@ public class ServicesRpcProxy implements IServices {
         }
     }
 
+    private void handleUpdate(Response response) {
+        System.out.println("PROXY -> handleUpdate");
+        System.out.println("RESPONSE -> " + response);
+        if (response.type() == ResponseType.CORRECT_GUESS) {
+            client.correctGuess((GuessDTO) response.data());
+        } else if (response.type() == ResponseType.WRONG_GUESS) {
+            client.wrongGuess((GuessDTO) response.data());
+        } else if (response.type() == ResponseType.GAME_END_WON) {
+            client.wonGame((Game) response.data());
+        } else if (response.type() == ResponseType.GAME_END_LOST) {
+            client.lostGame((Game) response.data());
+        }else if (response.type() == ResponseType.LEADERBOARD_UPDATE) {
+            client.updateLeaderboard((LeaderboardDTO) response.data());
+        }
+    }
+    private boolean isUpdate(Response response) {
+        return response.type() == ResponseType.CORRECT_GUESS ||
+                response.type() == ResponseType.WRONG_GUESS ||
+                response.type() == ResponseType.GAME_END_WON ||
+                response.type() == ResponseType.GAME_END_LOST ||
+                response.type() == ResponseType.LEADERBOARD_UPDATE;
+    }
+
+    @Override
+    public User checkLogIn(User user, IObserver client) throws ServiceException {
+        this.initializeConnection();
+        Request req = (new Request.Builder()).type(RequestType.LOGIN).data(user).build();
+        this.sendRequest(req);
+        Response response = this.readResponse();
+        if (response.type() == ResponseType.OK) {
+            this.client = client;
+            User foundUser = (User)response.data();
+            user.setId(foundUser.getId());
+            loggedUser = foundUser;
+            return foundUser;
+        } else if (response.type() == ResponseType.ERROR) {
+            String err = response.data().toString();
+            this.closeConnection();
+            throw new ServiceException(err);
+        }
+        return null;
+    }
+
+    @Override
+    public void logout(User user) throws ServiceException {
+        Request req = (new Request.Builder()).type(RequestType.LOGOUT).data(user).build();
+        this.sendRequest(req);
+        Response response = this.readResponse();
+        this.closeConnection();
+        if (response.type() == ResponseType.ERROR) {
+            String err = response.data().toString();
+            throw new ServiceException(err);
+        }
+    }
+
+    @Override
+    public LeaderboardDTO fetchLeaderboard() throws ServiceException {
+        Request req = (new Request.Builder()).type(RequestType.FETCH_LEADERBOARD).build();
+        sendRequest(req);
+        Response response = readResponse();
+        if (response.type() == ResponseType.ERROR) {
+            String err = response.data().toString();
+            throw new ServiceException(err);
+        } else if (response.type() == ResponseType.OK) {
+            return (LeaderboardDTO) response.data();
+        }
+        return null;
+    }
+
+    @Override
+    public void guessMade(GuessDTO guessdto) throws ServiceException {
+        System.out.println("PROXY -> GUESS_MADE");
+        Request req = (new Request.Builder()).type(RequestType.GUESS_MADE).data(guessdto).build();
+        sendRequest(req);
+        Response response = readResponse();
+        if (response.type() == ResponseType.ERROR) {
+            String err = response.data().toString();
+            throw new ServiceException(err);
+        } else if (response.type() == ResponseType.OK) {
+            System.out.println("PROXY -> ok");
+        }
+    }
 }

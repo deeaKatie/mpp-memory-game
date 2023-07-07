@@ -1,4 +1,5 @@
 import model.User;
+import model.Word;
 import repository.*;
 import service.Service;
 import services.IServices;
@@ -28,8 +29,47 @@ public class StartServer {
 
         IUserRepository userRepository = new UserDBRepository();
         IGameDBRepository gameDBRepository = new GameDBRepository();
+        IWordDBRepository wordDBRepository = new WordDBRepository();
+        IConfigurationDBRepository configurationDBRepository = new ConfigurationDBRepository();
+        IGuessDBRepository guessDBRepository = new GuessDBRepository();
 
-        IServices service=new Service(userRepository, gameDBRepository);
+
+        // add words
+//        Word w1 = new Word("apple");
+//        Word w2 = new Word("pear");
+//        Word w3 = new Word("juice");
+//        Word w4 = new Word("venom");
+//        Word w5 = new Word("bottle");
+//        Word w6 = new Word("box");
+//        Word w7 = new Word("pen");
+//        Word w8 = new Word("cookie");
+//        Word w9 = new Word("controller");
+//        Word w10 = new Word("mouse");
+//
+//        wordDBRepository.add(w1);
+//        wordDBRepository.add(w2);
+//        wordDBRepository.add(w3);
+//        wordDBRepository.add(w4);
+//        wordDBRepository.add(w5);
+//        wordDBRepository.add(w6);
+//        wordDBRepository.add(w7);
+//        wordDBRepository.add(w8);
+//        wordDBRepository.add(w9);
+//        wordDBRepository.add(w10);
+//
+//        User u1 = new User("ana", "ana");
+//        User u2 = new User("bob", "bob");
+//        User u3 = new User("alex", "alex");
+//        User u4 = new User("mitro", "mitro");
+//
+//        userRepository.add(u1);
+//        userRepository.add(u2);
+//        userRepository.add(u3);
+//        userRepository.add(u4);
+
+        IServices service = new Service(userRepository, gameDBRepository,
+                wordDBRepository, configurationDBRepository,
+                guessDBRepository);
 
         int serverPort = defaultPort;
         try {
