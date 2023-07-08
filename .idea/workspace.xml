@@ -4,36 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ccfa7e6b-654c-463b-a268-93519fa570db" name="Changes" comment="implemented dtos">
-      <change afterPath="$PROJECT_DIR$/Persistance/src/main/java/repository/ConfigurationDBRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Persistance/src/main/java/repository/GuessDBRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Persistance/src/main/java/repository/IConfigurationDBRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Persistance/src/main/java/repository/IGuessDBRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Persistance/src/main/java/repository/IWordDBRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Persistance/src/main/java/repository/WordDBRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="ccfa7e6b-654c-463b-a268-93519fa570db" name="Changes" comment="rest done, game done, without restating game option">
+      <change afterPath="$PROJECT_DIR$/Server/memgame.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/memgame.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/java/controller/PlayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/controller/PlayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/resources/MainScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/resources/MainScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/src/main/java/dto/GuessDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Model/src/main/java/dto/GuessDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/src/main/java/dto/LeaderboardDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Model/src/main/java/dto/LeaderboardDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/src/main/java/dto/LeaderboardItemDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Model/src/main/java/dto/LeaderboardItemDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Model/src/main/java/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking/src/main/java/rpcprotocol/ClientRpcReflectionWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Networking/src/main/java/rpcprotocol/ClientRpcReflectionWorker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking/src/main/java/rpcprotocol/RequestType.java" beforeDir="false" afterPath="$PROJECT_DIR$/Networking/src/main/java/rpcprotocol/RequestType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking/src/main/java/rpcprotocol/ResponseType.java" beforeDir="false" afterPath="$PROJECT_DIR$/Networking/src/main/java/rpcprotocol/ResponseType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networking/src/main/java/rpcprotocol/ServicesRpcProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/Networking/src/main/java/rpcprotocol/ServicesRpcProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistance/src/main/java/repository/GameDBRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistance/src/main/java/repository/GameDBRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistance/src/main/java/repository/UserDBRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistance/src/main/java/repository/UserDBRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistance/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Persistance/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RESTServices/src/main/java/rest/RestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RESTServices/src/main/java/rest/RestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RESTServices/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/RESTServices/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/hibernateORM.db" beforeDir="false" afterPath="$PROJECT_DIR$/Server/hibernateORM.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/StartServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/StartServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/service/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/src/main/java/services/IObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Services/src/main/java/services/IObserver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/src/main/java/services/IServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/Services/src/main/java/services/IServices.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,7 +239,7 @@
       <workItem from="1688571902403" duration="14263000" />
       <workItem from="1688663280065" duration="5500000" />
       <workItem from="1688726907524" duration="8233000" />
-      <workItem from="1688737987332" duration="16280000" />
+      <workItem from="1688737987332" duration="17046000" />
     </task>
     <task id="LOCAL-00001" summary="first working version, w/ log in &amp; showing users">
       <created>1688574514383</created>
@@ -350,7 +324,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688739471552</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="rest done, game done, without restating game option">
+      <option name="closed" value="true" />
+      <created>1688754867354</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1688754867354</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,6 +360,7 @@
     <MESSAGE value="base app" />
     <MESSAGE value="implemented model classes" />
     <MESSAGE value="implemented dtos" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented dtos" />
+    <MESSAGE value="rest done, game done, without restating game option" />
+    <option name="LAST_COMMIT_MESSAGE" value="rest done, game done, without restating game option" />
   </component>
 </project>
