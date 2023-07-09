@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ccfa7e6b-654c-463b-a268-93519fa570db" name="Changes" comment="rest done, game done, without restating game option">
-      <change afterPath="$PROJECT_DIR$/Server/memgame.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/memgame.db" afterDir="false" />
+    <list default="true" id="ccfa7e6b-654c-463b-a268-93519fa570db" name="Changes" comment="some forgotten DB">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -239,7 +237,7 @@
       <workItem from="1688571902403" duration="14263000" />
       <workItem from="1688663280065" duration="5500000" />
       <workItem from="1688726907524" duration="8233000" />
-      <workItem from="1688737987332" duration="17046000" />
+      <workItem from="1688737987332" duration="18993000" />
     </task>
     <task id="LOCAL-00001" summary="first working version, w/ log in &amp; showing users">
       <created>1688574514383</created>
@@ -332,7 +330,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688754867354</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="some forgotten DB">
+      <option name="closed" value="true" />
+      <created>1688806086747</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1688806086747</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,6 +367,7 @@
     <MESSAGE value="implemented model classes" />
     <MESSAGE value="implemented dtos" />
     <MESSAGE value="rest done, game done, without restating game option" />
-    <option name="LAST_COMMIT_MESSAGE" value="rest done, game done, without restating game option" />
+    <MESSAGE value="some forgotten DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="some forgotten DB" />
   </component>
 </project>
